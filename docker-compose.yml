@@ -1,0 +1,66 @@
+version: "3"
+
+services:
+
+  ubuntu-target:
+    image: ubuntu:22.04
+    container_name: ubuntu-target
+    hostname: ubuntu-target
+    networks:
+      - agent-net
+    # Install and start SSH. Root password is 'root'
+    command: >
+      bash -c "
+        apt-get update -qq &&
+        apt-get install -y openssh-server -qq &&
+        echo 'root:root' | chpasswd &&
+        sed -i 's/#PermitRootLogin.*/PermitRootLogin yes/' /etc/ssh/sshd_config &&
+        sed -i 's/#PasswordAuthentication.*/PasswordAuthentication yes/' /etc/ssh/sshd_config &&
+        mkdir -p /run/sshd &&
+        service ssh start &&
+        tail -f /dev/null
+      "
+    restart: unless-stopped
+
+  debian-target:
+    image: debian:12
+    container_name: debian-target
+    hostname: debian-target
+    networks:
+      - agent-net
+    command: >
+      bash -c "
+        apt-get update -qq &&
+        apt-get install -y openssh-server -qq &&
+        echo 'root:root' | chpasswd &&
+        sed -i 's/#PermitRootLogin.*/PermitRootLogin yes/' /etc/ssh/sshd_config &&
+        sed -i 's/#PasswordAuthentication.*/PasswordAuthentication yes/' /etc/ssh/sshd_config &&
+        mkdir -p /run/sshd &&
+        service ssh start &&
+        tail -f /dev/null
+      "
+    restart: unless-stopped
+
+  agent:
+    build: .
+    container_name: ai-agent
+    hostname: ai-agent
+    networks:
+      - agent-net
+    depends_on:
+      - ubuntu-target
+      - debian-target
+    environment:      
+      GEMINI_API_KEY: ""
+      OPENAI_API_KEY: ""
+      OLLAMA_BASE_URL: "http://host.docker.internal:11434"
+      OLLAMA_MODEL: "llama3.1:8b"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    stdin_open: true
+    tty: true
+    restart: unless-stopped
+
+networks:
+  agent-net:
+    driver: bridge
