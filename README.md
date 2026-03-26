@@ -6,7 +6,7 @@
 [![Docker](https://img.shields.io/badge/Docker-29.2.1-blue)](https://www.docker.com/)
 [![License](https://img.shields.io/badge/License-Closed%20Source-red)]()
 
-**SSH Agent** is an AI-powered remote command execution tool that interprets natural language instructions, generates Linux shell commands using an LLM, and executes them on remote hosts (Docker containers) via SSH, returning unaltered command output with an explaination.
+**SSH (Secure Shell) Agent** is an AI-powered remote command execution tool that interprets natural language instructions, generates Linux shell commands using an LLM, and executes them on remote hosts (Docker containers) via SSH, returning unaltered command output with an explaination.
 
 ---
 
