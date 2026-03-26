@@ -192,17 +192,20 @@ SSH_Agent/
 
 6. **Build the agent container:**
    ```sh
-   docker compose build
+   docker compose build (or)
+   docker-compose build
    ```
 
 7. **Run the agent:**
    ```sh
-   docker compose run --rm agent
+   docker compose run --rm agent (or)
+   docker-compose run --rm agent
    ```
 
    Restart containers if required at any point:
    ```sh
-   docker compose restart ubuntu-target debian-target
+   docker compose restart ubuntu-target debian-target (or)
+   docker compose restart ubuntu-target debian-target 
    ```
 
 ---
@@ -217,16 +220,19 @@ venv\Scripts\activate
 pip install -r requirements.txt
 
 # 3. Start target containers — keep running
-docker compose up -d ubuntu-target debian-target
+docker compose up -d ubuntu-target debian-target (or)
+docker-compose up -d ubuntu-target debian-target
 
 # 4. Start Ollama server — keep running in a separate terminal
 ollama serve
 
 # 5. Build the agent image
-docker compose build
+docker compose build (or)
+docker-compose build
 
 # 6. Run the agent
-docker compose run --rm agent
+docker compose run --rm agent (or)
+docker-compose run --rm agent
 ```
 
 ---
@@ -262,6 +268,24 @@ SSH credentials for both: `root` / `root`
   - Run `docker ps` and confirm `ubuntu-target` and `debian-target` are listed as running.
   - Inspect container logs: `docker logs ubuntu-target` / `docker logs debian-target`
   - Ensure SSH service is active inside the containers.
+
+- **Ollama fails to start (port already in use / another process running)**
+  - Check if an existing Ollama process is running:
+    ```bash
+    tasklist | findstr ollama
+    ```
+  - Kill the specific process using its PID:
+    ```bash
+    taskkill /f /pid <PID>
+    ```
+  - Or terminate all Ollama processes:
+    ```bash
+    taskkill /F /IM ollama.exe
+    ```
+  - Restart the server:
+    ```bash
+    ollama serve
+    ```
 
 - **LLM returns no response or agent hangs**
   - Confirm `ollama serve` is running in a separate terminal window.
