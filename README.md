@@ -1,7 +1,7 @@
 # SSH Agent
 
 [![Python](https://img.shields.io/badge/Python-3.12-yellow)](https://www.python.org/)
-[![Ollama](https://img.shields.io/badge/Ollama-0.12.0-white)](https://ollama.com/)
+[![Ollama](https://img.shields.io/badge/Ollama-0.12.0-white)](https://github.com/ollama/ollama/releases/tag/v0.12.0)
 [![LangChain](https://img.shields.io/badge/LangChain-Latest-green)](https://www.langchain.com/)
 [![Docker](https://img.shields.io/badge/Docker-29.2.1-blue)](https://www.docker.com/)
 [![License](https://img.shields.io/badge/License-Closed%20Source-red)]()
@@ -166,7 +166,7 @@ SSH_Agent/
 
 5. **Setup Ollama (local LLM):**
 
-   > **NOTE:** Ollama **0.12.0** is specifically recommended for NVIDIA GPU support. Newer versions of Ollama may not function correctly with certain NVIDIA GPU configurations. Running on CPU is fully supported with no impact on functionality.
+   > **NOTE:** Ollama **0.12.0** is specifically recommended for NVIDIA GPU support. Newer versions of Ollama may not function as expected with certain NVIDIA GPU configurations. Running on CPU is fully supported with no impact on functionality. Download Ollama **0.12.0** from the provided github repository by **Ollama**.
 
    Get the required model:
    ```sh
