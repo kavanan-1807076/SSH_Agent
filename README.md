@@ -210,7 +210,7 @@ SSH_Agent/
 
 ---
 
-## Typical Execution Flow
+## Execution Flow
 
 ```sh
 # 1. Activate virtual environment (local development)
