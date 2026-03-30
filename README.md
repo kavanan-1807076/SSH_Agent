@@ -107,7 +107,7 @@ SSH_Agent/
 
 ## Key Components
 
-- **agent.py:**
+- **Agent (Python File):**
   The heart of the project. Implements LLM selection logic (Ollama, OpenAI, Gemini), defines the SSH execution tool using Paramiko and builds the full LangGraph agent workflow. Handles multi-turn reasoning and routes tool calls based on LLM decisions.
 
 - **Docker Compose Setup:**
