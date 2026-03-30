@@ -293,13 +293,13 @@ SSH credentials for both: `root` / `root`
   - Check `OLLAMA_BASE_URL` is correctly set (use `host.docker.internal` when running agent inside Docker).
 
 - **NVIDIA GPU not being used by Ollama**
-  - Ensure Ollama version is exactly **0.12.0** — newer versions may drop NVIDIA support.
+  - Ensure Ollama version is exactly **0.12.0** - newer versions may drop NVIDIA support.
   - Verify GPU drivers are functional: `nvidia-smi` (For NVIDIA GPUs only).
   - Running on CPU is a fully supported fallback with no functional difference but performance is lowered.
 
 - **Command produces no visible output**
   - Some Linux commands produce no stdout when they succeed (e.g. `touch`, `mkdir`).
-  - This is expected behaviour — the agent returns only real output and nothing else, an explaination will be given by the agent.
+  - This is expected behaviour - the agent returns only real output and nothing else, an explaination will be given by the agent.
 
 - **Docker image build errors**
   - Ensure Docker Desktop (Windows) or Docker Engine (Linux) is running before any `docker compose` commands.
