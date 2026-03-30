@@ -184,7 +184,7 @@ SSH_Agent/
    OLLAMA_MODEL=llama3.1:8b
    ```
 
-   **Alternative LLM providers** — if API keys are set they will take priority over Ollama:
+   **Alternative LLM providers** - if API keys are set they will take priority over Ollama:
    ```
    OPENAI_API_KEY=<your-key>       # enables OpenAI
    GEMINI_API_KEY=<your-key>       # enables Gemini
@@ -219,11 +219,11 @@ venv\Scripts\activate
 # 2. Install dependencies (first time only)
 pip install -r requirements.txt
 
-# 3. Start target containers — keep running
+# 3. Start target containers - keep running
 docker compose up -d ubuntu-target debian-target (or)
 docker-compose up -d ubuntu-target debian-target
 
-# 4. Start Ollama server — keep running in a separate terminal
+# 4. Start Ollama server - keep running in a separate terminal
 ollama serve
 
 # 5. Build the agent image
